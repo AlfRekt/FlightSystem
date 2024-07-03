@@ -379,5 +379,10 @@ namespace FlightSystem
                 e.Handled = true;
             }
         }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }     
 }
