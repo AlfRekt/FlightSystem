@@ -29,12 +29,12 @@ namespace FlightSystem
             administratorPanel.listBox1.Items.Clear();
  
             Passenger passenger = new Passenger(textBox1.Text, textBox2.Text, textBox3.Text, "kullanici",
-            "kullanici", textBox4.Text, textBox5.Text,
-            textBox6.Text, textBox7.Text, textBox8.Text, textBox9.Text);
+            "kullanici", comboBox1.Text, comboBox2.Text,
+            comboBox3.Text, comboBox4.Text, comboBox5.Text, textBox9.Text);
 
             yolcular.Add(passenger);
 
-            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "" && textBox7.Text != "" && textBox6.Text != "" && textBox8.Text != "" && textBox9.Text != "")
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && comboBox5.Text != "" && textBox9.Text != "")
             {
                 using (StreamWriter writetext = new StreamWriter("passenger.txt"))
                 {
@@ -201,7 +201,11 @@ namespace FlightSystem
 
                 Administrator ucus = new Administrator(features[0], features[1], features[2], features[3],
                 features[4], features[5]);
-
+                comboBox1.Items.Add(features[0]);
+                comboBox2.Items.Add(features[1]);
+                comboBox3.Items.Add(features[2]);
+                comboBox4.Items.Add(features[3]);
+                comboBox5.Items.Add(features[4]);
                 ucuslar.Add(ucus);
                 listBox1.Items.Add(line);
             }

@@ -288,7 +288,6 @@ namespace FlightSystem
         private void UcusEkle_Click(object sender, EventArgs e)
         {
             PassengerPanel passengerPanel = new PassengerPanel(); 
-
             Administrator flights = new Administrator(textBox6.Text,textBox7.Text,textBox8.Text,textBox9.Text,textBox10.Text,textBox11.Text);
 
             ucuslar.Add(flights);
