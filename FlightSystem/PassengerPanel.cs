@@ -201,16 +201,66 @@ namespace FlightSystem
 
                 Administrator ucus = new Administrator(features[0], features[1], features[2], features[3],
                 features[4], features[5]);
-                comboBox1.Items.Add(features[0]);
-                comboBox2.Items.Add(features[1]);
-                comboBox3.Items.Add(features[2]);
-                comboBox4.Items.Add(features[3]);
-                comboBox5.Items.Add(features[4]);
+                if (!comboBox1.Items.Contains(features[0]))
+                {
+                    comboBox1.Items.Add(features[0]);
+                }
+                if (!comboBox2.Items.Contains(features[1]))
+                {
+                    comboBox2.Items.Add(features[1]);
+                }
+                if (!comboBox3.Items.Contains(features[2]))
+                {
+                    comboBox3.Items.Add(features[2]);
+                }
+                if (!comboBox4.Items.Contains(features[3]))
+                {
+                    comboBox4.Items.Add(features[3]);
+                }
+                if (!comboBox5.Items.Contains(features[4]))
+                {
+                    comboBox5.Items.Add(features[4]);
+                }
+
+                SortComboBoxItems(comboBox1);
+                SortComboBoxItems(comboBox2);
+                SortComboBoxItemsByTime(comboBox3);
+                SortComboBoxItemsByTime(comboBox4);
+                SortComboBoxItemsByDate(comboBox5);
+
                 ucuslar.Add(ucus);
                 listBox1.Items.Add(line);
             }
         }
 
+        private void SortComboBoxItems(ComboBox comboBox)
+        {
+            List<string> sortedItems = comboBox.Items.Cast<string>().ToList();
+
+            sortedItems.Sort();
+
+            comboBox.Items.Clear();
+            comboBox.Items.AddRange(sortedItems.ToArray());
+        }
+        private void SortComboBoxItemsByTime(ComboBox comboBox)
+        {
+            List<string> sortedItems = comboBox.Items.Cast<string>()
+            .OrderBy(time => DateTime.Parse(time))
+            .ToList();
+
+            comboBox.Items.Clear();
+            comboBox.Items.AddRange(sortedItems.ToArray());
+        }
+
+        private void SortComboBoxItemsByDate(ComboBox comboBox)
+        {
+            List<string> sortedItems = comboBox.Items.Cast<string>()
+                .OrderBy(date => DateTime.ParseExact(date, "dd.MM.yyyy", null))
+                .ToList();
+
+            comboBox.Items.Clear();
+            comboBox.Items.AddRange(sortedItems.ToArray());
+        }
         private void label5_Click_1(object sender, EventArgs e)
         {
             Application.Exit();

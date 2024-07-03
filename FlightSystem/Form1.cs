@@ -75,12 +75,21 @@ namespace FlightSystem
                 
                 String [] features = line.Split(',');
 
-                Passenger yolcu = new Passenger(features[0], features[1], features[2], features[3],
-                features[4], features[5], features[6],
-                features[7], features[8], features[9], features[10]);
+                // Kontrol ekleyin
+                if (features.Length >= 11)
+                {
+                    Passenger yolcu = new Passenger(features[0], features[1], features[2], features[3],
+                    features[4], features[5], features[6],
+                    features[7], features[8], features[9], features[10]);
 
-                yolcular.Add(yolcu);
-                listBox1.Items.Add(line);
+                    yolcular.Add(yolcu);
+                    listBox1.Items.Add(line);
+                }
+                else
+                {
+                    // Hatalı satır varsa loglama veya hata mesajı ekleyebilirsiniz
+                    MessageBox.Show("Eksik veri tespit edildi: " + line);
+                }
             }
 
             var lines_ = File.ReadLines("Administrator.txt");
@@ -89,11 +98,20 @@ namespace FlightSystem
 
                 String[] features = line.Split(',');
 
-                Administrator ucus = new Administrator(features[0], features[1], features[2], features[3],
-                features[4], features[5]);
+                // Kontrol ekleyin
+                if (features.Length >= 6)
+                {
+                    Administrator ucus = new Administrator(features[0], features[1], features[2], features[3],
+                    features[4], features[5]);
 
-                ucuslar.Add(ucus);
-                listBox3.Items.Add(line);
+                    ucuslar.Add(ucus);
+                    listBox3.Items.Add(line);
+                }
+                else
+                {
+                    // Hatalı satır varsa loglama veya hata mesajı ekleyebilirsiniz
+                    MessageBox.Show("Eksik veri tespit edildi: " + line);
+                }
             }
         }
 
